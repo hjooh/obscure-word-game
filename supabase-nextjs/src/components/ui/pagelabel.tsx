@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils/utils'
 
 export interface PageLabelProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
