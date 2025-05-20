@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import RandomWordGlitch from '@/components/backend/randomwordglitch'
 import { Button } from '@/components/ui/button'
 import SplitPane, { Pane } from "split-pane-react";
+import {useRouter} from 'next/router';
 
 export default function Play() {
     const [sizes, setSizes] = useState<(number | string)[]>(['50%', '50%'])
+
+    const router = useRouter();
 
     const sashStyle: React.CSSProperties = {
         background: '#777',
@@ -22,30 +25,21 @@ export default function Play() {
     }
 
     return (
-        <>
-            <SplitPane
-                split="vertical"
-                sizes={['50%', '50%']}
-                onChange={setSizes}
-                sashRender={() => <div style={sashStyle} />}
-                className="w-full h-full"
-            >
-
-                {/* Left pane */}
-                <Pane>
-                    <div style={{ ...paneContent, background: '#ddd' }}>
-                        Pane 1
-                    </div>
-                </Pane>
-
-                {/* Right pane */}
-                <Pane>
-                    <div style={{ ...paneContent, background: '#a1a5a9' }}>
-                        Pane 2
-                    </div>
-                </Pane>
-            </SplitPane>
-        </>
+        // <div className="h-screen flex flex-row">
+        //     <div className="h-{screen-200px} flex-grow bg-amber-500">pew</div>
+        //     <div className="h-{screen-200px} flex-grow bg-red-500">pewpew</div>
+        // </div>
+        <div className="flex flex-col h-screen overflow-hidden">
+   
+            <main className="flex flex-1 overflow-hidden">
+                <div className="flex-1 bg-amber-500 flex items-center justify-center">
+                    New
+                </div>
+                <div className="flex-1 bg-red-500 flex items-center justify-center">
+                    Saved
+                </div>
+            </main>
+        </div>
     )
 }
 
